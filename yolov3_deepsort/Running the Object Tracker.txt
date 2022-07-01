@@ -1,0 +1,48 @@
+아나콘다 프롬프트 실행
+
+###########################################################################################################################################
+# 1. 가상환경 활성화
+conda activate tracker-gpu
+
+# 2. 설치 경로로 이동
+cd C:\Users\User\Desktop\yolov3_deepsort-master
+
+# 3. 저장된 영상으로 실행(실행할 영상 경로, 저장할 경로, 가중치 파일 경로, 클래스 수, 클래스 구분 파일 경로)
+python object_tracker.py --video ./data/video/web_video.avi --output ./data/video/result0628.avi --weights ./weights/yolov3-custom.tf --num_classes 1 --classes ./data/labels/classes.names
+###########################################################################################################################################
+python object_tracker.py --video ./data/video/0615.mp4 --output ./data/video/result00.avi --weights ./weights/yolov3-custom2.tf --num_classes 3 --classes ./data/labels/classes2.names
+
+python savingWebVideo.py
+
+https://github.com/theAIGuysCode/yolov3_deepsort
+
+#Saving your yolov3 weights as a TensorFlow model.
+
+# yolov3-custom
+#관상어 전체
+python load_weights.py --weights ./weights/yolov3_custom.weights --output ./weights/yolov3-custom.tf --num_classes 1
+python load_weights.py --weights ./weights/yolov3_custom2.weights --output ./weights/yolov3-custom2.tf --num_classes 1
+
+#yolov3 on webcam 
+python object_tracker.py --video 0 --output ./data/video/results.avi
+
+#실행!
+#yolov3-custom (add --tiny flag if your custom weights were trained for tiny model)
+###########################################################################################################################################
+# 3. 저장된 영상으로 실행
+python object_tracker.py --video ./data/video/20220617.mp4 --output ./data/video/results0617_01.avi --weights ./weights/yolov3-custom.tf --num_classes 1 --classes ./data/labels/classes.names
+###########################################################################################################################################
+#캠
+python object_tracker.py --video 0 --output ./data/video/results00.avi --weights ./weights/yolov3-custom.tf --num_classes 1 --classes ./data/labels/classes.names
+
+
+# yolov3-custom (add --tiny flag if your custom weights were trained for tiny model)
+python load_weights.py --weights ./weights/<YOUR CUSTOM WEIGHTS FILE> --output ./weights/yolov3-custom.tf --<class>
+
+
+
+# Install set up
+conda env create -f conda-gpu.yml
+conda activate tracker-gpu
+pip install -r requirements-gpu.txt
+(pip install pymysql)
